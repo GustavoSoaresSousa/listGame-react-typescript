@@ -1,54 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../../hooks/useGame';
 import { CarroselConteiner } from '../../styles/carroselStyle';
-import img from '../../images/1.jpg';
-import img2 from '../../images/2.jpg'; 
-import img3 from '../../images/3.jpg';
-import img4 from '../../images/4.jpg';
-import img5 from '../../images/5.jpg';
+import { IGame } from '../../contexts/GameContext';
+import { myAPI } from '../../service/api';
+import { Card, Carousel } from 'react-bootstrap';
+import { CartItemSideContainer } from '../../styles/cartItemSide';
 
-export function Carrosel(){
-  const {games} = useGame();
-  return(
+export function Carrosel() {
+  const { games } = useGame();
+
+  return (
     <CarroselConteiner>
-      <div className='content'>
-        <div className='slides'>
-            <input type="radio" name='slide'  id='slide1'/>
-            <input type="radio" name='slide'  id='slide2'/>
-            <input type="radio" name='slide'  id='slide3'/>
-            <input type="radio" name='slide'  id='slide4'/>
-            <input type="radio" name='slide'  id='slide5'/>
+      <Carousel fade className='w-50'>
+        {
+          games?.slice(25, 35).map((data: IGame) => {
+            return <Carousel.Item key={data.id} className='w-100 carrosel-content'>
+            <img
+              className="w-100"
+              src={data.thumbnail}
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>{data.title}</h3>
+              <p>{data.platform}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          })
+        }
+      </Carousel>
+        <CartItemSideContainer>
+          {
+            games?.slice(100, 103).map((data:IGame) => {
+            return <><Card className='card-content' bg="dark" text={'white'} style={{ width: '18rem' }}>
+                <Card.Img className='card-img' variant="top" src={data.thumbnail} />
+                <Card.Body>
+                    <Card.Title>{data.title}</Card.Title>
+                </Card.Body></Card>            
+            </>
+            })
+          }
 
-            <div className="slide s1">
-                <img src={img} alt="" />
-            </div>
+        </CartItemSideContainer>
 
-            <div className="slide s2">
-              <img src={img2} alt="" />
-            </div>
-
-            <div className="slide s3">
-              <img src={img3} alt="" />
-            </div>
-
-            <div className="slide s4">
-              <img src={img4} alt="" />
-            </div>
-
-            <div className="slide s5">
-              <img src={img5} alt="" />
-            </div>
-        </div>
-
-        <div className='navigation'>
-          <label className='bar' htmlFor="slide1"></label>
-          <label className='bar' htmlFor="slide2"></label>
-          <label className='bar' htmlFor="slide3"></label>
-          <label className='bar' htmlFor="slide4"></label>
-          <label className='bar' htmlFor="slide5"></label>
-        </div>
-      </div>
-
+ 
     </CarroselConteiner>
   )
 }

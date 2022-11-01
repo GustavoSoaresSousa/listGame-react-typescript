@@ -7,20 +7,24 @@ export const SearchContainer = styled.div`
   padding-top: 14px;
   padding-left: 15vw;
     .div-container{
-      display: flex;
-      justify-content: left;
+
       border-radius: 22px;
       background: #000;
-      padding: 8px;
+      
       width: 450px;
-
+       form{
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+       }
 
       .emoji-search{
-        padding-right: 15px;
-        padding-left: 15px;
+        background: #000;
       }
 
       .input-search{
+        width: 100%;
+        padding: 4px;
         input{
           background: transparent;
           border: 0;

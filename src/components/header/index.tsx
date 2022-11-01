@@ -2,7 +2,7 @@ import React from "react";
 import { HeaderContainer } from "../../styles/headerStyle";
 import { Search } from "../search";
 
-export function Header(){
+export function Header(){ // ser estiver logaado fazer os signs ser sig out
   return(
     <HeaderContainer>
       <nav>
@@ -18,8 +18,8 @@ export function Header(){
 
         <div className="signs">
           <ul>
-            <li><a href="#">Sign in</a></li>
-            <li><a href="#">Sign up</a></li>
+            <li><a href="/logIn">Log In</a></li>
+            <li><a href="/register">Create Account</a></li> 
           </ul>
         </div>
       </nav>

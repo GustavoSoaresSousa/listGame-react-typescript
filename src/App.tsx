@@ -1,23 +1,32 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from './styles/globalStyle'
 import { Main } from './pages/Main';
 import { Explore } from './pages/Explore';
+import { GameContextProvider } from './contexts/GameContext';
+import { GamePage } from './pages/Game';
+import { SignUp } from './pages/SignUp';
+import { LogIn } from './pages/LogIn';
+import { UserContextProvider } from './contexts/UserContext';
 
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/explore' element={<Explore />} />
-      </Routes>
-      <GlobalStyle />
-    </Router>
-      
-   
-   
+      <GameContextProvider>
+        <UserContextProvider>
+          <GlobalStyle />
+          <Routes>
+            <Route path='/' element={<Main />} />
+            <Route path='/explore' element={<Explore />} />
+            <Route path='/game' element={<GamePage />} />
+            <Route path='/register' element={<SignUp />} />
+            <Route path='logIn' element={<LogIn />} />
+          </Routes>
+        </UserContextProvider>
+      </GameContextProvider>
 
+    </Router>
   );
 }
 

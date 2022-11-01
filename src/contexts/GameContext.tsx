@@ -1,13 +1,22 @@
-import { createContext, ReactNode, useState, useEffect } from "react";
+import { createContext, ReactNode, useState, useEffect, Dispatch, SetStateAction } from "react";
 import { myAPI } from "../service/api";
 
-export const GameContext = createContext({} as GameType);
 
-type GameType = {
-  games: IGame[] | undefined;
+// From the code below you can see that the values can be undefined as well
+export const GameContext = createContext<GameType>({} as GameType)
+
+
+export interface GameType  {
+  gameId: number;
+  setGameId: (id: number) => void;
+  games: IGame[];
+  setGames: (data : IGame[]) => void;
+
+  searchGameByName: (nameGame: string) => boolean;
+  game: IGame[]
 } 
 
-interface ScreenShots {
+export interface ScreenShots {
   id: number;
   image: string;
 }
@@ -45,17 +54,26 @@ type GameContextProviderProps = {
 
 export function GameContextProvider(props: GameContextProviderProps){
   const [games, setGames] = useState<IGame[]>([]);
+  const [gameId, setGameId ] = useState(0);
+  const [game, setGame] = useState<IGame[]>([]);
 
+  function searchGameByName(nameGame: string): boolean {
+    const gameSearched = games?.filter((data:IGame) => data.title.toUpperCase().includes(nameGame.toUpperCase()));
+    setGame(gameSearched);
+    if(!gameSearched) return false;
+    return true
+  }
+  
   useEffect(() => {
-    async function getAllGames(): Promise<void>{
-      const response = await myAPI.get('/gameList/allGames');
-      setGames(response.data)
+    async function getAllGames(): Promise<void> {
+      const response = await myAPI.get<IGame[]>('/gameList/allGames');
+      setGames(response.data);
     }
     getAllGames();
   }, [])
 
   return(
-    <GameContext.Provider value={{games}}>
+    <GameContext.Provider value={{games, setGames, gameId, setGameId, searchGameByName, game}}>
       {props.children}
     </GameContext.Provider>
   )
