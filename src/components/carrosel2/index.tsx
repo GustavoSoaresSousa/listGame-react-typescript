@@ -5,18 +5,25 @@ import { Card, Carousel } from 'react-bootstrap';
 import { myAPI } from '../../service/api';
 import { CartItemSideContainer } from '../../styles/cartItemSide';
 import { CarroselConteiner } from '../../styles/carroselStyle';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export function SecondCarrosel() {
-  const { games } = useGame();
+  const { games, setGameId } = useGame();
+  const navigate = useNavigate();
+  function setId(id: number): void {
+    setGameId(id);
+    navigate('/game');
+  }
+  
 
   return (
     <CarroselConteiner>
       <Carousel fade className='w-50'>
         {
           games?.slice(5, 15).map((data: IGame) => {
-            return <Carousel.Item key={data.id} className='w-100 carrosel-content'>
+            return <Carousel.Item key={data.id} className='w-100 carrosel-content' onClick={() => setId(data.id)}>
               <img
                 className="w-100"
                 src={data.thumbnail}
@@ -33,7 +40,7 @@ export function SecondCarrosel() {
       <CartItemSideContainer>
           {
             games?.slice(103, 105).map((data:IGame) => {
-            return <><Card  className='card-content' bg="dark" text={'white'} style={{ width: '18rem' }}>
+            return <><Card  className='card-content' onClick={() => setId(data.id)} bg="dark" text={'white'} style={{ width: '18rem' }}>
                 <Card.Img key={data.id} className='card-img' variant="top" src={data.thumbnail} />
                 <Card.Body >
                     <Card.Title>{data.title}</Card.Title>

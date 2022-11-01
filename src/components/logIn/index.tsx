@@ -32,6 +32,7 @@ export function LogInForm() {
     
     const data: token = response.data;
     navigate('/')
+    window.localStorage.setItem('tokenUserAuthenticate', data.token);
     setToken(data.token);
   }
 

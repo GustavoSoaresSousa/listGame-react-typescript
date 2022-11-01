@@ -1,13 +1,24 @@
 import axios from "axios";
-const headers = { 'Content-Type': 'application/json' };
 
-//implementar token aqui token aqui salvando  no local storege
-  // if (token) {
-  //   headers['x-access-token'] = token;
-  // }
+
+
+
+function authenticate(){
+  const token = window.localStorage.getItem('tokenUserAuthenticate');
+  console.log(token);
+  if (token) {
+    const headers ={ ['x-access-token'] : token };
+    console.log(headers)
+    return headers;
+  }
+}
+
+const headers = authenticate();
+
 export const myAPI = axios.create({
   baseURL: 'https://animelist.fly.dev',
   headers: {
     ...headers,
   },
+  
 })

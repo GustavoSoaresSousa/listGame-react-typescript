@@ -8,6 +8,7 @@ import { GamePage } from './pages/Game';
 import { SignUp } from './pages/SignUp';
 import { LogIn } from './pages/LogIn';
 import { UserContextProvider } from './contexts/UserContext';
+import { FavoritePage } from './pages/Favorites';
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
             <Route path='/explore' element={<Explore />} />
             <Route path='/game' element={<GamePage />} />
             <Route path='/register' element={<SignUp />} />
-            <Route path='logIn' element={<LogIn />} />
+            <Route path='/logIn' element={<LogIn />} />
+            <Route path='/favorites' element={<FavoritePage />} />
           </Routes>
         </UserContextProvider>
       </GameContextProvider>
