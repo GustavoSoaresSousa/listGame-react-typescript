@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useGame } from '../../hooks/useGame';
-import { CarroselConteiner } from '../../styles/carroselStyle';
 import { IGame } from '../../contexts/GameContext';
+import { CarroselConteiner } from '../../styles/carroselStyle';
 import { Card, Carousel } from 'react-bootstrap';
 import { CartItemSideContainer } from '../../styles/cartItemSide';
-import { useNavigate } from 'react-router-dom';
+import { Loading } from '../loading';
 
 export function Carrosel() {
-  const { games, setGameId } = useGame();
+
+  const { games, setGameId, removeLoading } = useGame();
   const navigate = useNavigate();
+
   function setId(id: number): void {
     setGameId(id);
     navigate('/game');
@@ -32,11 +35,13 @@ export function Carrosel() {
           </Carousel.Item>
           })
         }
+        {!removeLoading && <Loading />}
       </Carousel>
         <CartItemSideContainer>
           {
             games?.slice(100, 103).map((data:IGame) => {
             return <><Card className='card-content' onClick={() => setId(data.id)} bg="dark" text={'white'} style={{ width: '18rem' }}>
+                {/* <div className='add-fav'><button>+</button></div> */}
                 <Card.Img className='card-img' variant="top" src={data.thumbnail} />
                 <Card.Body>
                     <Card.Title>{data.title}</Card.Title>
@@ -44,7 +49,7 @@ export function Carrosel() {
             </>
             })
           }
-
+          {!removeLoading && <Loading />}
         </CartItemSideContainer>
 
  

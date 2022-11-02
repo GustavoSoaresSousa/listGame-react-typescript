@@ -14,6 +14,9 @@ export interface GameType  {
 
   searchGameByName: (nameGame: string) => boolean;
   game: IGame[]
+
+  removeLoading: boolean;
+  setRemoveLoading: (bool: boolean) => void;
 } 
 
 export interface ScreenShots {
@@ -53,6 +56,7 @@ type GameContextProviderProps = {
 
 
 export function GameContextProvider(props: GameContextProviderProps){
+  const [ removeLoading, setRemoveLoading ] = useState<boolean>(false);
   const [games, setGames] = useState<IGame[]>([]);
   const [gameId, setGameId ] = useState(0);
   const [game, setGame] = useState<IGame[]>([]);
@@ -68,12 +72,13 @@ export function GameContextProvider(props: GameContextProviderProps){
     async function getAllGames(): Promise<void> {
       const response = await myAPI.get<IGame[]>('/gameList/allGames');
       setGames(response.data);
+      setRemoveLoading(true);
     }
     getAllGames();
   }, [])
 
   return(
-    <GameContext.Provider value={{games, setGames, gameId, setGameId, searchGameByName, game}}>
+    <GameContext.Provider value={{games, setGames, gameId, setGameId, searchGameByName, game, removeLoading, setRemoveLoading}}>
       {props.children}
     </GameContext.Provider>
   )

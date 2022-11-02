@@ -6,11 +6,12 @@ import { myAPI } from '../../service/api';
 import { CartItemSideContainer } from '../../styles/cartItemSide';
 import { CarroselConteiner } from '../../styles/carroselStyle';
 import { useNavigate } from 'react-router-dom';
+import { Loading } from '../loading';
 
 
 
 export function SecondCarrosel() {
-  const { games, setGameId } = useGame();
+  const { games, setGameId, removeLoading } = useGame();
   const navigate = useNavigate();
   function setId(id: number): void {
     setGameId(id);
@@ -36,6 +37,7 @@ export function SecondCarrosel() {
             </Carousel.Item>
           })
         }
+        {!removeLoading && <Loading />}
       </Carousel>
       <CartItemSideContainer>
           {
@@ -48,6 +50,7 @@ export function SecondCarrosel() {
             </>
             })
           }
+          {!removeLoading && <Loading />}
         </CartItemSideContainer>
     </CarroselConteiner>
   )

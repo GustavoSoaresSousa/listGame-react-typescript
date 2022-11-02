@@ -17,7 +17,7 @@ export function Header() { // ser estiver logaado fazer os signs ser sig out
             <li><a>List game</a> </li>
             <li><a href="/">Home</a></li>
             <li><a href="/explore">Explore</a></li>
-            <li><a href="/favorites">Favs</a></li>
+            <li><a href="/favorites">Favorites</a></li>
           </ul>
         </div>
 
