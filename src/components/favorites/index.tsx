@@ -22,21 +22,27 @@ export function Favorites() {
       setGamesFavorites(response.data);
     }
     getFavs();
-  }, [])
+  }, [setGamesFavorites])
 
   function setId(id: number): void {
     setGameId(id);
     navigate('/game');
   } 
-  // components loading
+
+  async function deleteFavorite(id: number, title: string): Promise<void>{
+    const response = await myAPI.post('/gameList/deleteFav', {
+      id: id,
+      title: title
+    })
+  } 
 
   return (
     <CartGameConteiner>
       {
         gamesFavorites.map((data: IGame) => {
-          return <div key={data.id} onClick={() => setId(data.id)} className='div-content'>
-            <div className='add-fav'><button>X</button></div>
-            <img src={data.thumbnail} alt="" />
+          return <div key={data.id} className='div-content'>
+            <div className='add-fav'><button onClick={() => deleteFavorite(data.id, data.title)}>X</button></div>
+            <img onClick={() => setId(data.id)} src={data.thumbnail} alt="" />
             <div>{data.title}</div>
             <div className='plataform'>{data.platform}</div>
           </div>
@@ -44,7 +50,7 @@ export function Favorites() {
       }
       {!removeLoading && <Loading />}
       {removeLoading && gamesFavorites.length === 0 && (
-        <p>Not exists favorites</p>
+        <p>don't exists favorites</p>
       )}
     </CartGameConteiner>
   )

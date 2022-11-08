@@ -21,12 +21,12 @@ export function SecondCarrosel() {
 
   return (
     <CarroselConteiner>
-      <Carousel fade className='w-50'>
+      <Carousel fade className='w-50 carrosel-container'>
         {
           games?.slice(5, 15).map((data: IGame) => {
-            return <Carousel.Item key={data.id} className='w-100 carrosel-content' onClick={() => setId(data.id)}>
+            return <Carousel.Item key={data.id} className='carrosel-content' onClick={() => setId(data.id)}>
               <img
-                className="w-100"
+                className=""
                 src={data.thumbnail}
                 alt="First slide"
               />

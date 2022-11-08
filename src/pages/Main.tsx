@@ -10,7 +10,7 @@ export function Main(){
   return(
     <>
       <Header />
-      <Search /> 
+       <Search /> 
       <Carrosel />
       <SecondCarrosel />
       <RecommendationsCart />

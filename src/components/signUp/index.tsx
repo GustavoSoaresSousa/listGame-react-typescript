@@ -15,6 +15,8 @@ type IUser = {
   password: string;
 }
 
+
+
 export function SignUpForm(){
   const [user, setUser] = useState<IUser>(initialUser);
   const navigate = useNavigate();
@@ -54,7 +56,7 @@ export function SignUpForm(){
         <input name="email" value={user.email} onChange={(event) => handleInput(event)} type="text" required />
 
         <label>Password</label>
-        <input name="password" value={user.password} onChange={(event) => handleInput(event)} type="text" required />
+        <input name="password" value={user.password} onChange={(event) => handleInput(event)} type="password" required />
 
         <button type="submit" className="button">Sign up</button>
       </form>

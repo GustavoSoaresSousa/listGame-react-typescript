@@ -1,14 +1,9 @@
 import axios from "axios";
 
-
-
-
 function authenticate(){
   const token = window.localStorage.getItem('tokenUserAuthenticate');
-  console.log(token);
   if (token) {
     const headers ={ ['x-access-token'] : token };
-    console.log(headers)
     return headers;
   }
 }
@@ -20,5 +15,4 @@ export const myAPI = axios.create({
   headers: {
     ...headers,
   },
-  
 })

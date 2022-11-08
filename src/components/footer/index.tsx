@@ -1,27 +1,20 @@
 import React from "react";
 import { FooterContainer } from "../../styles/FooterStyle";
+import linkedinIcon from "../../images/linkedin.png";
+import gitHubIcon from "../../images/github2.png";
 
 export function Footer(){
   return(
     <FooterContainer>
       <div className="div-container">
-          <section className="content-footer">
-            <div className="links-infos">
-              <ul>
-                <li><a href="#">Git Hub</a></li>
-                <li><a href="#">API</a></li>
-              </ul>
-            </div>
-            <div>
-              <ul>
-                <li>Lorem</li>
-                <li>Lorem</li>
-              </ul>
-            </div>
-          </section>
-
           <section className="author">
-            <div>Desevolvido por <a href="https://linkedin.com/in/gustavosoaressousa">Gustavo Soares Sousa</a> </div>
+            <div>
+              <a>Desenvolvido por Gustavo Soares</a>
+              <div>
+                <a href="https://www.linkedin.com/in/gustavosoaressousa/"><img src={linkedinIcon} alt="" /></a> 
+                <a href="https://github.com/GustavoSoaresSousa"><img src={gitHubIcon} alt="" /></a></div>                
+              </div>
+
           </section>
       </div>
 

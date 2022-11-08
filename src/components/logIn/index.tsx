@@ -51,7 +51,7 @@ export function LogInForm() {
         <input autoComplete="off" name="email" value={user.email} onChange={(event) => handleInput(event)} type="text" required/>
 
         <label>Password</label>
-        <input name="password" value={user.password} onChange={(event) => handleInput(event)} type="text" required/>
+        <input name="password" value={user.password} onChange={(event) => handleInput(event)} type="password" required/>
 
         <button type="submit" className="button">Log In</button>
       </form>

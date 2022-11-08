@@ -19,12 +19,12 @@ export function Carrosel() {
   
   return (
     <CarroselConteiner>
-      <Carousel fade className='w-50'>
+      <Carousel fade className='w-50 carrosel-container'>
         {
           games?.slice(25, 35).map((data: IGame) => {
-            return <Carousel.Item className='w-100 carrosel-content' onClick={() => setId(data.id)}>
+            return <Carousel.Item className='carrosel-content' onClick={() => setId(data.id)}>
             <img
-              className="w-100"
+              className=""
               src={data.thumbnail}
               alt="First slide"
             />
@@ -40,7 +40,7 @@ export function Carrosel() {
         <CartItemSideContainer>
           {
             games?.slice(100, 103).map((data:IGame) => {
-            return <><Card className='card-content' onClick={() => setId(data.id)} bg="dark" text={'white'} style={{ width: '18rem' }}>
+            return <><Card className='card-content' onClick={() => setId(data.id)} bg="dark" text={'white'}>
                 {/* <div className='add-fav'><button>+</button></div> */}
                 <Card.Img className='card-img' variant="top" src={data.thumbnail} />
                 <Card.Body>

@@ -3,37 +3,26 @@ import styled from "styled-components";
 export const FooterContainer = styled.div`
   background: #000;
   color: #fff;
-  height: 250px;
-  ul{
-    li{
-      list-style-type: none;
-      margin: 15px;
-      a{
-        text-decoration: none;
-        color: #fff;
-        transition: .8s;
-      }
-      a:hover{
-        text-decoration:underline;
-        color: blue;
-      }
-    }
-  }
+  min-height:100px;
+  max-height: 100%;
+  min-width: 320px;
+  max-width: 100%;
   .div-container{
-    padding: 60px;
-    .content-footer{
-      display: flex;
-      justify-content: space-around;
-
-      .links-infos{
-
-      }
-    }
-
+    padding: 30px;
     .author{
       width: 100%;
       text-align: center;
-
+      div{
+        display: flex;
+        justify-content: space-around;
+        a{
+          padding: 4px;
+          img{
+            height: 25px;
+            width: 25px;
+          }
+        }
+      }
     }
   }
 

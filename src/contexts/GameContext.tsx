@@ -54,12 +54,19 @@ type GameContextProviderProps = {
   children: ReactNode;
 }
 
+const queryParams = {
+  limit: 10,
+  sort: "desc",
+  page: 1
+};
+
 
 export function GameContextProvider(props: GameContextProviderProps){
   const [ removeLoading, setRemoveLoading ] = useState<boolean>(false);
   const [games, setGames] = useState<IGame[]>([]);
   const [gameId, setGameId ] = useState(0);
   const [game, setGame] = useState<IGame[]>([]);
+
 
   function searchGameByName(nameGame: string): boolean {
     const gameSearched = games?.filter((data:IGame) => data.title.toUpperCase().includes(nameGame.toUpperCase()));
@@ -70,7 +77,11 @@ export function GameContextProvider(props: GameContextProviderProps){
   
   useEffect(() => {
     async function getAllGames(): Promise<void> {
-      const response = await myAPI.get<IGame[]>('/gameList/allGames');
+      const response = await myAPI.get<IGame[]>('/gameList/allGames', {
+        params: {
+          _limit: 10,
+        }
+      });
       setGames(response.data);
       setRemoveLoading(true);
     }

@@ -37,6 +37,7 @@ export const CartGameConteiner = styled.div`
     img{
       transition: 0.12s;
       border-radius: 4px;
+      width: 370px;
     }
     img:hover{
       cursor: pointer;
@@ -44,11 +45,11 @@ export const CartGameConteiner = styled.div`
     }
 
     .plataform{
-    padding: 4px;
-    border-radius: 8px;
-    text-align: center;
-    background: #211F24;
-    width: 35%
+      padding: 4px;
+      border-radius: 8px;
+      text-align: center;
+      background: #211F24;
+      width: 35%
     }
   }
 
@@ -56,5 +57,69 @@ export const CartGameConteiner = styled.div`
 
   }
 
+  @media (max-width: 320px) {
+    grid-template-columns: 1fr;
+    .div-content{
+      padding: 18px;
+      img{
+        width: 280px;
+      }
+    }
+  } 
 
+  @media (min-width: 375px) {
+    grid-template-columns: 1fr;
+    .div-content{
+      padding: 18px;
+      img{
+        width: 310px;
+      }
+    }
+  }
+  @media (min-width: 425px) {
+    grid-template-columns: 1fr;
+    .div-content{
+      padding: 18px;
+      img{
+        width: 350px;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    .div-content{
+      padding: 16px;
+      img{
+        width: 350px;
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    .div-content{
+      padding: 14px;
+      img{
+        width: 310px;
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    .div-content{
+      padding: 14px;
+      img{
+        width: 310px;
+      }
+    }
+  }  
+  @media (min-width: 1440px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    .div-content{
+      padding: 14px;
+      img{
+        width: 310px;
+      }
+    }
+  }
 `
