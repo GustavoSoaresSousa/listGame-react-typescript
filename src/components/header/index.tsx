@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { HeaderContainer } from "../../styles/headerStyle";
-import { Search } from "../search";
 
 export function Header() { // ser estiver logaado fazer os signs ser sig out
   const token = window.localStorage.getItem('tokenUserAuthenticate');

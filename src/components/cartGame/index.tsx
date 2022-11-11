@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartGameConteiner } from '../../styles/cartGameStyle';
-
 import { IGame } from '../../contexts/GameContext';
 import { useGame } from '../../hooks/useGame';
 import { myAPI } from '../../service/api';
@@ -26,6 +25,7 @@ export function CartGame(){
       id: id,
       title: title,
     });
+    window.alert('Favorite added');
   }
 
   return(

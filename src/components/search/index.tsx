@@ -1,6 +1,5 @@
-import React, { BaseSyntheticEvent, ChangeEvent, FormEvent, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IGame } from '../../contexts/GameContext';
 import { useGame } from '../../hooks/useGame';
 import { SearchContainer } from '../../styles/searchStyle';
 

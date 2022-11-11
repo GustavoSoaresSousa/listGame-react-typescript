@@ -1,8 +1,7 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React from 'react';
 import { useGame } from '../../hooks/useGame';
 import { IGame } from '../../contexts/GameContext';
 import { Card, Carousel } from 'react-bootstrap';
-import { myAPI } from '../../service/api';
 import { CartItemSideContainer } from '../../styles/cartItemSide';
 import { CarroselConteiner } from '../../styles/carroselStyle';
 import { useNavigate } from 'react-router-dom';

@@ -1,32 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-bootstrap';
-import { IGame, ScreenShots } from '../../contexts/GameContext';
+import { IGame } from '../../contexts/GameContext';
 import { useGame } from '../../hooks/useGame';
 import { myAPI } from '../../service/api';
 import { GameConteiner } from '../../styles/GameStyle';
-
-interface NormalizedResponse {
-  id: number;
-  title: string;
-  thumbnail: string;
-  status: string;
-  short_description: string;
-  description: string;
-  game_url: string;
-  genre: string;
-  platform: string;
-  publisher: string;
-  developer: string;
-  release_date: string;
-  freetogame_profile_url: string;
-  os: string;
-  processor: string;
-  memory: string;
-  graphics: string;
-  storage: string;
-  image: string;
-}
-
 
 export function Game() {
   const { gameId } = useGame();

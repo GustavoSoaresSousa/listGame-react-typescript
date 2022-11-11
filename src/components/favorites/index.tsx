@@ -22,7 +22,7 @@ export function Favorites() {
       setGamesFavorites(response.data);
     }
     getFavs();
-  }, [setGamesFavorites])
+  }, [gamesFavorites]);
 
   function setId(id: number): void {
     setGameId(id);
@@ -30,6 +30,7 @@ export function Favorites() {
   } 
 
   async function deleteFavorite(id: number, title: string): Promise<void>{
+    window.alert('Favorite removed');
     const response = await myAPI.post('/gameList/deleteFav', {
       id: id,
       title: title
